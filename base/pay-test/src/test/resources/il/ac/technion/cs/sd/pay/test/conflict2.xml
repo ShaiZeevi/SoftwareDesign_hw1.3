@@ -1,0 +1,60 @@
+<Root>
+    <Client Id ="1234">
+        <Payment>
+            <Id>Store</Id>
+            <Amount>120</Amount>
+        </Payment>
+        <Payment>
+            <Id>Pharmacy</Id>
+            <Amount>90</Amount>
+        </Payment>
+    </Client>
+    <Client Id="HannahB">
+        <Payment>
+            <Id>Movies</Id>
+            <Amount>500</Amount>
+        </Payment>
+        <Payment>
+            <Id>KnifeCo</Id>
+            <Amount>12</Amount>
+        </Payment>
+        <Payment>
+            <Id>Bathtubs</Id>
+            <Amount>1200</Amount>
+        </Payment>
+    </Client>
+    <Client Id="1234">
+        <Payment>
+            <Id>Bathtubs</Id>
+            <Amount>1200</Amount>
+        </Payment>
+        <Payment>
+            <Id>Pharmacy</Id>
+            <Amount>30</Amount>
+        </Payment>
+    </Client>
+    <Client Id="Student201">
+        <Payment>
+            <Id>Pharmacy</Id>
+            <Amount>10</Amount>
+        </Payment>
+        <Payment>
+            <Id>Starbucks</Id>
+            <Amount>215</Amount>
+        </Payment>
+    </Client>
+    <Client Id = "BasicBish">
+        <Payment>
+            <Id>NailsNails</Id>
+            <Amount>500</Amount>
+        </Payment>
+        <Payment>
+            <Id>Starbucks</Id>
+            <Amount>750</Amount>
+        </Payment>
+        <Payment>
+            <Id>Primark</Id>
+            <Amount>4</Amount>
+        </Payment>
+    </Client>
+</Root>
