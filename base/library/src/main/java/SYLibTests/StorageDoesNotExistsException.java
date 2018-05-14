@@ -1,4 +1,4 @@
-package SYlib;
+package SYLibTests;
 
 /**
  * Created by Yoav Zuriel on 5/10/2018.

@@ -1,4 +1,4 @@
-package SYlib;
+package SYLibTests;
 
 import java.util.Collection;
 import java.util.Optional;

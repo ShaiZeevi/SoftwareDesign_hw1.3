@@ -1,7 +1,5 @@
-package SYLib;
+package SYLibTests;
 
-import SYlib.ISYLibable;
-import SYlib.SYLib;
 import com.google.inject.AbstractModule;
 
 /**
@@ -10,7 +8,7 @@ import com.google.inject.AbstractModule;
 public class SYLibTestModule extends AbstractModule{
     @Override
     protected void configure() {
-        bind(ISYLibable.class).to(SYLib.class);
+        bind(ISYLibable.class).to(SYLibrary.class);
 //        this.bind(SecureDatabaseFactory.class).toInstance((unused) -> Mockito.mock(SecureDatabase.class));
     }
 }

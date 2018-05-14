@@ -1,4 +1,4 @@
-package SYlib;
+package SYLibTests;
 
 import il.ac.technion.cs.sd.pay.ext.SecureDatabase;
 import il.ac.technion.cs.sd.pay.ext.SecureDatabaseFactory;
@@ -10,13 +10,13 @@ import java.util.zip.DataFormatException;
 /**
  * Created by Yoav Zuriel on 4/16/2018.
  */
-public class SYLib implements ISYLibable {
+public class SYLibrary implements ISYLibable {
     private SecureDatabaseFactory myFactory;
     private SecureDatabase collectionsDB;
     private HashMap<String, SecureDatabase> userDBs;
 
     @Inject
-    public SYLib(SecureDatabaseFactory myFactory) {
+    public SYLibrary(SecureDatabaseFactory myFactory) {
         this.myFactory = myFactory;
         String myDB = "MapDB";
         collectionsDB = this.myFactory.open(myDB);
