@@ -1,7 +1,7 @@
 package il.ac.technion.cs.sd.pay.app;
 
-import SYLibTests.CollectionAlreadyExistsException;
-import SYLibTests.ISYLibable;
+import SYLib.CollectionAlreadyExistsException;
+import SYLib.ISYLibable;
 import javafx.util.Pair;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

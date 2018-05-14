@@ -1,7 +1,7 @@
 package il.ac.technion.cs.sd.pay.test;
 
-import SYLibTests.ISYLibable;
-import SYLibTests.SYLibrary;
+import SYLib.ISYLibable;
+import SYLib.SYLibrary;
 import com.google.inject.AbstractModule;
 import il.ac.technion.cs.sd.pay.app.PayBookInitializer;
 import il.ac.technion.cs.sd.pay.app.PayBookReader;

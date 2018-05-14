@@ -1,4 +1,4 @@
-package SYLibTests;
+package SYLib;
 
 import il.ac.technion.cs.sd.pay.ext.SecureDatabase;
 import il.ac.technion.cs.sd.pay.ext.SecureDatabaseFactory;

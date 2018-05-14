@@ -1,5 +1,7 @@
 package SYLibTests;
 
+import SYLib.ISYLibable;
+import SYLib.SYLibrary;
 import com.google.inject.AbstractModule;
 
 /**

@@ -1,7 +1,7 @@
 package il.ac.technion.cs.sd.pay.app;
 
-import SYLibTests.CollectionDoesNotExistException;
-import SYLibTests.ISYLibable;
+import SYLib.CollectionDoesNotExistException;
+import SYLib.ISYLibable;
 import javafx.util.Pair;
 
 import javax.inject.Inject;
