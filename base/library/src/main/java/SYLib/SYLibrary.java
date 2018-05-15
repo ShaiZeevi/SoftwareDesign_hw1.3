@@ -33,16 +33,20 @@ public class SYLibrary implements ISYLibable {
     public void saveCollection(String collectionName, Collection<String> collection) throws CollectionAlreadyExistsException {
         try {
             if (collectionsDB.get(collectionName.getBytes())[0] == 1) throw new CollectionAlreadyExistsException();
-        } catch (InterruptedException | DataFormatException ignored) {
+        } catch (InterruptedException ignored) {
         } catch (NoSuchElementException e) {
             SecureDatabase current = myFactory.open(collectionName);
             byte[] temp = new byte[1];
             temp[0] = 1;
-            collectionsDB.addEntry(collectionName.getBytes(), temp);
-            Integer i = 0;
-            for (String item : collection) {
-                current.addEntry(i.toString().getBytes(), item.getBytes());
-                i++;
+            try {
+                collectionsDB.addEntry(collectionName.getBytes(), temp);
+                Integer i = 0;
+                for (String item : collection) {
+                    current.addEntry(i.toString().getBytes(), item.getBytes());
+                    i++;
+                }
+            } catch (DataFormatException e1) {
+                e1.printStackTrace();
             }
         }
     }
@@ -60,7 +64,7 @@ public class SYLibrary implements ISYLibable {
                     return restored;
                 }
             }
-        } catch (InterruptedException | DataFormatException ignored) {
+        } catch (InterruptedException ignored) {
         } catch (NoSuchElementException e) {
             throw new CollectionDoesNotExistException();
         }
@@ -82,7 +86,7 @@ public class SYLibrary implements ISYLibable {
         SecureDatabase current = userDBs.get(storageName);
         try {
             return Optional.of(new String(current.get(key.toString().getBytes())));
-        } catch (InterruptedException | DataFormatException ignored) {
+        } catch (InterruptedException ignored) {
         } catch (NoSuchElementException ignore) {
             return Optional.empty();
         }

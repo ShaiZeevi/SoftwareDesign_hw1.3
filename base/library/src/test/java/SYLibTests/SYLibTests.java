@@ -50,7 +50,7 @@ public class SYLibTests {
     }
 
     @Test
-    public void cantSaveTheSameCollectionTwiceTest() throws DataFormatException, InterruptedException {
+    public void cantSaveTheSameCollectionTwiceTest() throws InterruptedException {
         initNames();
 
         SecureDatabase mockDB = Mockito.mock(SecureDatabase.class);
@@ -69,7 +69,7 @@ public class SYLibTests {
 
 
     @Test
-    public void cantRestoreUnsavedCollectionTest() throws DataFormatException, InterruptedException {
+    public void cantRestoreUnsavedCollectionTest() throws InterruptedException {
         initNames();
 
         SecureDatabase mockDB = Mockito.mock(SecureDatabase.class);
@@ -80,7 +80,7 @@ public class SYLibTests {
     }
 
     @Test
-    public void restoreCollectionTest() throws DataFormatException, InterruptedException {
+    public void restoreCollectionTest() throws InterruptedException {
         initNames();
 
         SecureDatabase mockDB = Mockito.mock(SecureDatabase.class);
@@ -128,6 +128,11 @@ public class SYLibTests {
     }
 
     @Test
+    public void addEntryTwiceUpdatesTest(){
+
+    }
+
+    @Test
     public void getFromStorageWhichDoesNotExistTest() {
         initNames();
 
@@ -138,7 +143,7 @@ public class SYLibTests {
     }
 
     @Test
-    public void getEmptyValueTest() throws DataFormatException, InterruptedException, StorageAlreadyExistsException, StorageDoesNotExistsException {
+    public void getEmptyValueTest() throws InterruptedException, StorageAlreadyExistsException, StorageDoesNotExistsException {
         initNames();
 
         SecureDatabase mockDB = Mockito.mock(SecureDatabase.class);
