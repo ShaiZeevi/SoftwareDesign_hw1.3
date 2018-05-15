@@ -11,6 +11,7 @@ import org.junit.rules.Timeout;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
@@ -80,26 +81,33 @@ public class ExampleTest {
     @Test
     public void biggestSpendersInRightOrdersTest() throws Exception {
         PayBookReader reader = setupAndGetReader("small.xml");
-        assertEquals(Collections.singletonList("123"), reader.getRichestSellers());
+        assertEquals(Collections.singletonList("123"), reader.getBiggestSpenders());
     }
 
     @Test
     public void biggestSpendersInRightOrdersTest2() throws Exception {
         PayBookReader reader = setupAndGetReader("large.xml");
-        assertEquals(Arrays.asList("HannahB", "BasicBish", "Student201", "1234"), reader.getRichestSellers());
+        assertEquals(Arrays.asList("HannahB", "BasicBish", "Student201", "1234"), reader.getBiggestSpenders());
     }
 
     @Test
     public void biggestSpendersInRightOrdersWithConflictTest() throws Exception {
         PayBookReader reader = setupAndGetReader("conflict.xml");
-        assertEquals(Arrays.asList("HannahB", "BasicBish", "1234", "Student201"), reader.getRichestSellers());
+        assertEquals(Arrays.asList("HannahB", "BasicBish", "1234", "Student201"), reader.getBiggestSpenders());
     }
 
     @Test
     public void getRichestSellersConflictTest() throws Exception {
         PayBookReader reader = setupAndGetReader("conflict.xml");
         assertEquals(Arrays.asList("Bathtubs", "Starbucks", "Movies",
-                "NailsNails", "Store", "Pharmacy", "Comics", "KnifeCo", "Primark"), reader.getRichestSellers());
+                "NailsNails", "Store", "Pharmacy", "KnifeCo", "Primark"), reader.getRichestSellers());
+    }
+
+    @Test
+    public void getFavouriteSellerSmallTest() throws Exception{
+        PayBookReader reader = setupAndGetReader("small.xml");
+        assertEquals(Optional.of("Foobar"), reader.getFavoriteSeller("123"));
+
     }
 
     @Test
@@ -121,7 +129,15 @@ public class ExampleTest {
     @Test
     public void getFavouriteSellerClientExistsConflictTest() throws Exception {
         PayBookReader reader = setupAndGetReader("conflict2.xml");
-        assertEquals(Optional.of("Pharmacy"), reader.getFavoriteSeller("1234"));
+        assertEquals(Optional.of("Bathtubs"), reader.getFavoriteSeller("1234"));
+    }
+
+    @Test
+    public void getBiggestClientSmallTest() throws Exception {
+        PayBookReader reader = setupAndGetReader("small.xml");
+        assertEquals(Optional.of("123"), reader.getBiggestClient("Moobar"));
+        assertEquals(Optional.of("123"), reader.getBiggestClient("Foobar"));
+        assertEquals(Optional.of("123"), reader.getBiggestClient("Boobar"));
     }
 
     @Test
@@ -131,15 +147,9 @@ public class ExampleTest {
     }
 
     @Test
-    public void gerBiggestClientSmallTest() throws Exception {
-        PayBookReader reader = setupAndGetReader("small.xml");
-        assertEquals(Optional.of("Moobar"), reader.getBiggestClient("123"));
-    }
-
-    @Test
     public void getBiggestClientConflictTest() throws Exception {
         PayBookReader reader = setupAndGetReader("conflict2.xml");
-        assertEquals(Optional.of("HannaB"), reader.getBiggestClient("Bathtubs"));
+        assertEquals(Optional.of("1234"), reader.getBiggestClient("Bathtubs"));
     }
 
     @Test
@@ -157,7 +167,7 @@ public class ExampleTest {
         PayBookReader reader = setupAndGetReader("large.xml");
         HashMap<String, Integer> sellers = new HashMap<>();
         sellers.put("Store", 120);
-        sellers.put("Pharmacy", 30);
+        sellers.put("Pharmacy", 60);
         sellers.put("Movies", 400);
         sellers.put("KnifeCo", 12);
         sellers.put("Bathtubs", 1200);
@@ -172,10 +182,10 @@ public class ExampleTest {
     public void getBiggestPaymentsFromClientsOnlyZerosTest() throws Exception {
         PayBookReader reader = setupAndGetReader("zeros.xml");
         Map<String, Integer> payments = new HashMap<>();
-        payments.put("1234", 0);
-        payments.put("HannahB", 0);
-        payments.put("Student201", 0);
-        payments.put("BasicBish", 0);
+//        payments.put("1234", 0);
+//        payments.put("HannahB", 0);
+//        payments.put("Student201", 0);
+//        payments.put("BasicBish", 0);
         assertEquals(payments, reader.getBiggestPaymentsFromClients());
     }
 
@@ -198,11 +208,11 @@ public class ExampleTest {
         payments.put("HannahB", 1200);
         payments.put("Student201", 215);
         payments.put("BasicBish", 750);
-        payments.put("Zero1", 0);
-        payments.put("Zero2", 0);
-        payments.put("Zero3", 0);
-        payments.put("Zero4", 0);
-        payments.put("Zero5", 0);
+//        payments.put("Zero1", 0);
+//        payments.put("Zero2", 0);
+//        payments.put("Zero3", 0);
+//        payments.put("Zero4", 0);
+//        payments.put("Zero5", 0);
         assertEquals(payments, reader.getBiggestPaymentsFromClients());
     }
 }

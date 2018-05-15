@@ -128,8 +128,21 @@ public class SYLibTests {
     }
 
     @Test
-    public void addEntryTwiceUpdatesTest(){
+    public void addEntryTwiceUpdatesTest() throws StorageAlreadyExistsException, InterruptedException {
+        initNames();
 
+        SecureDatabase mockDB = Mockito.mock(SecureDatabase.class);
+        ISYLibable myLib = new SYLibrary((unused) -> mockDB);
+        myLib.openStorage("Storage1");
+        Mockito.when(mockDB.get("1".getBytes())).thenReturn("3".getBytes());
+
+        try {
+            myLib.addEntry("Storage1", 1, "2");
+            myLib.addEntry("Storage1", 1, "3");
+            assertEquals(Optional.of("3"), myLib.get("Storage1", 1));
+        } catch (StorageDoesNotExistsException | DataFormatException e) {
+            fail();
+        }
     }
 
     @Test

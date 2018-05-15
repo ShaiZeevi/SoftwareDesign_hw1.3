@@ -6,6 +6,7 @@ import javafx.util.Pair;
 
 import javax.inject.Inject;
 import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -83,8 +84,9 @@ public class myPayBookReader implements PayBookReader {
         else return OptionalDouble.of(dbl);
     }
 
-    private int sellerOrClientComparator(Pair<String, Double> e1, Pair<String, Double> e2) {
-        if(!e1.getValue().equals(e2.getValue())) return e1.getValue().compareTo(e2.getValue());
+    //Descending in value, Ascending in ID
+    public int sellerOrClientComparator(Pair<String, Double> e1, Pair<String, Double> e2) {
+        if(!e1.getValue().equals(e2.getValue())) return e2.getValue().compareTo(e1.getValue());
         return e1.getKey().compareTo(e2.getKey());
     }
 
@@ -96,28 +98,30 @@ public class myPayBookReader implements PayBookReader {
 
     @Override
     public List<String> getRichestSellers() {
-        return sellerProfits.entrySet().stream().map(x -> new Pair<>(x.getKey(), x.getValue())).sorted(this::sellerOrClientComparator)
-                .map(Pair::getKey).collect(Collectors.toList());
+        return sellerProfits.entrySet().stream().map(x -> new Pair<>(x.getKey(), x.getValue()))
+                .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
     }
 
     @Override
     public Optional<String> getFavoriteSeller(String clientId) {
-        Optional<Pair<String, Double>> temp = sales.entrySet().stream()
+        List<String> temp = sales.entrySet().stream()
                 .filter(x -> x.getKey().getKey().equals(clientId))
                 .map(x -> new Pair<>(x.getKey().getValue(), x.getValue()))
-                .max(this::sellerOrClientComparator);
+                .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
 
-        return temp.map(Pair::getKey);
+        if(temp.size() == 0) return Optional.empty();
+        else return Optional.of(temp.get(0));
     }
 
     @Override
     public Optional<String> getBiggestClient(String sellerId) {
-        Optional<Pair<String, Double>> temp = sales.entrySet().stream()
+        List<String> temp = sales.entrySet().stream()
                 .filter(x -> x.getKey().getValue().equals(sellerId))
                 .map(x -> new Pair<>(x.getKey().getKey(), x.getValue()))
-                .max(this::sellerOrClientComparator);
+                .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
 
-        return temp.map(Pair::getKey);
+        if(temp.size() == 0) return Optional.empty();
+        else return Optional.of(temp.get(0));
     }
 
 
@@ -127,7 +131,8 @@ public class myPayBookReader implements PayBookReader {
 
         for(String sellerId : sellerProfits.keySet()){
             if(!getBiggestClient(sellerId).isPresent()) {
-                throw new AssertionError("no payment made to seller " + sellerId);
+                continue;
+//                throw new AssertionError("no payment made to seller " + sellerId);
             }
 
             String clientId = getBiggestClient(sellerId).get();
@@ -135,17 +140,18 @@ public class myPayBookReader implements PayBookReader {
 
             result.put(sellerId, (int)amount);
         }
-
+        //TODO: sort and get top 10
         return result;
     }
 
     @Override
     public Map<String, Integer> getBiggestPaymentsFromClients() {
-        Map<String, Integer> result = new HashMap<>();
+        HashMap<String, Integer> result = new HashMap<>();
 
         for(String clientId : clientSpending.keySet()){
             if(!getFavoriteSeller(clientId).isPresent()) {
-                throw new AssertionError("client " + clientId + " has made not payment");
+                continue;
+//                throw new AssertionError("client " + clientId + " has made not payment");
             }
 
             String sellerId = getFavoriteSeller(clientId).get();
@@ -153,7 +159,7 @@ public class myPayBookReader implements PayBookReader {
 
             result.put(clientId, (int)amount);
         }
-
+        //TODO: sort and get top 10
         return result;
     }
 
