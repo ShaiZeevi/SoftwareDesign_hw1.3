@@ -13,6 +13,7 @@ class PayBookModule extends AbstractModule {
     protected void configure() {
         bind(PayBookInitializer.class).to(myPayBookInitializer.class);
         bind(PayBookReader.class).to(myPayBookReader.class);
+        //TODO: remove that!!!
 //        bind(ISYLibable.class).to(SYLibrary.class);
         bind(ISYLibable.class).toInstance(new FakeLib());
     }
