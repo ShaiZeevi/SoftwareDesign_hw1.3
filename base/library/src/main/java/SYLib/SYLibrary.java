@@ -23,6 +23,12 @@ public class SYLibrary implements ISYLibable {
         userDBs = new HashMap<>();
     }
 
+    //What if we open a storage with the same name as a collection?
+    //  maybe change the exception to NameAlreadyExists
+
+    //How do we transfer the userDBs from one instance to another?
+    //  maybe use an additional DB like collectionDB
+
     @Override
     public void openStorage(String storageName) throws StorageAlreadyExistsException {
         if (userDBs.containsKey(storageName)) throw new StorageAlreadyExistsException();

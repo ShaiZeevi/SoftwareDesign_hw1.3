@@ -6,7 +6,6 @@ import javafx.util.Pair;
 
 import javax.inject.Inject;
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -86,7 +85,7 @@ public class myPayBookReader implements PayBookReader {
 
     //Descending in value, Ascending in ID
     public int sellerOrClientComparator(Pair<String, Double> e1, Pair<String, Double> e2) {
-        if(!e1.getValue().equals(e2.getValue())) return e2.getValue().compareTo(e1.getValue());
+        if (!e1.getValue().equals(e2.getValue())) return e2.getValue().compareTo(e1.getValue());
         return e1.getKey().compareTo(e2.getKey());
     }
 
@@ -109,7 +108,7 @@ public class myPayBookReader implements PayBookReader {
                 .map(x -> new Pair<>(x.getKey().getValue(), x.getValue()))
                 .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
 
-        if(temp.size() == 0) return Optional.empty();
+        if (temp.size() == 0) return Optional.empty();
         else return Optional.of(temp.get(0));
     }
 
@@ -120,36 +119,49 @@ public class myPayBookReader implements PayBookReader {
                 .map(x -> new Pair<>(x.getKey().getKey(), x.getValue()))
                 .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
 
-        if(temp.size() == 0) return Optional.empty();
+        if (temp.size() == 0) return Optional.empty();
         else return Optional.of(temp.get(0));
     }
 
 
     @Override
     public Map<String, Integer> getBiggestPaymentsToSellers() {
-        Map<String, Integer> result = new HashMap<>();
+        List<Pair<String, Double>> resultList = new LinkedList<>();
 
-        for(String sellerId : sellerProfits.keySet()){
-            if(!getBiggestClient(sellerId).isPresent()) {
-                continue;
-//                throw new AssertionError("no payment made to seller " + sellerId);
+        for (String sellerId : sellerProfits.keySet()) {
+            if (!getBiggestClient(sellerId).isPresent()) {
+//                continue;
+                throw new AssertionError("no payment made to seller " + sellerId);
             }
 
             String clientId = getBiggestClient(sellerId).get();
             double amount = sales.get(new Pair<>(clientId, sellerId));
 
-            result.put(sellerId, (int)amount);
+            resultList.add(new Pair<>(sellerId, amount));
         }
-        //TODO: sort and get top 10
-        return result;
+        return getTop10Map(resultList);
+    }
+
+    private Map<String, Integer> getTop10Map(List<Pair<String, Double>> resultList) {
+        resultList = resultList.stream().sorted(this::sellerOrClientComparator).collect(Collectors.toList());
+        Map<String, Integer> resultMap = new HashMap<>();
+        for (int i = 0; i < 10; i++) {
+            try {
+                Pair<String, Double> currentPair = resultList.get(i);
+                resultMap.put(currentPair.getKey(), (currentPair.getValue()).intValue());
+            } catch (IndexOutOfBoundsException ignore) {
+                break;
+            }
+        }
+        return resultMap;
     }
 
     @Override
     public Map<String, Integer> getBiggestPaymentsFromClients() {
-        HashMap<String, Integer> result = new HashMap<>();
+        List<Pair<String, Double>> resultList = new LinkedList<>();
 
-        for(String clientId : clientSpending.keySet()){
-            if(!getFavoriteSeller(clientId).isPresent()) {
+        for (String clientId : clientSpending.keySet()) {
+            if (!getFavoriteSeller(clientId).isPresent()) {
                 continue;
 //                throw new AssertionError("client " + clientId + " has made not payment");
             }
@@ -157,10 +169,10 @@ public class myPayBookReader implements PayBookReader {
             String sellerId = getFavoriteSeller(clientId).get();
             double amount = sales.get(new Pair<>(clientId, sellerId));
 
-            result.put(clientId, (int)amount);
+            resultList.add(new Pair<>(clientId, amount));
         }
         //TODO: sort and get top 10
-        return result;
+        return getTop10Map(resultList);
     }
 
 }

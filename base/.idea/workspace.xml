@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a1043f16-841d-4fac-a7be-9f297c1861df" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/PayBookModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/PayBookModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/src/main/java/SYLib/SYLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/SYLib/SYLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/myPayBookReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/myPayBookReader.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/library/target/" />
     <ignored path="$PROJECT_DIR$/pay-app/target/" />
@@ -18,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="myPayBookReader.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="myPayBookReader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/myPayBookReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="132" selection-start-line="132" selection-end-line="132" />
+            <state relative-caret-position="328">
+              <caret line="133" column="27" lean-forward="true" selection-start-line="133" selection-start-column="27" selection-end-line="133" selection-end-column="27" />
               <folding>
                 <element signature="docComment;class#myPayBookReader#0" />
                 <element signature="method#myPayBookReader#0;class#myPayBookReader#0" />
@@ -42,7 +43,7 @@
       <file leaf-file-name="PayBookReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/PayBookReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
+            <state relative-caret-position="616">
               <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
             </state>
           </provider>
@@ -51,7 +52,7 @@
       <file leaf-file-name="FakeLib.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/FakeLib.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
+            <state relative-caret-position="264">
               <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -60,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PayBookModule.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PayBookModule.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/PayBookModule.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -72,11 +73,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SYLibrary.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/library/src/main/java/SYLib/SYLibrary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ExampleTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/ExampleTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="210" column="30" selection-start-line="210" selection-start-column="30" selection-end-line="214" selection-end-column="35" />
+            <state relative-caret-position="306">
+              <caret line="178" column="5" lean-forward="true" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
               <folding>
                 <element signature="method#setupAndGetReader#0;class#ExampleTest#0" />
                 <element signature="method#testSimple#0;class#ExampleTest#0" />
@@ -93,32 +103,13 @@
                 <element signature="method#getFavouriteSellerClientDoesntExistTest#0;class#ExampleTest#0" />
                 <element signature="method#getFavouriteSellerClientExistsNoConflictTest#0;class#ExampleTest#0" />
                 <element signature="method#getFavouriteSellerClientExistsConflictTest#0;class#ExampleTest#0" />
-                <element signature="method#gerBiggestClientSmallTest#0;class#ExampleTest#0" />
                 <element signature="method#getBiggestClientNoSellerTest#0;class#ExampleTest#0" />
                 <element signature="method#getBiggestClientConflictTest#0;class#ExampleTest#0" />
                 <element signature="method#getBiggestPaymentsToSellersSmallTest#0;class#ExampleTest#0" />
                 <element signature="method#getBiggestPaymentsFromClientsOnlyZerosTest#0;class#ExampleTest#0" />
-                <element signature="e#7222#7256#0" />
                 <element signature="method#getBiggestPaymentsFromClientsNoZerosTest#0;class#ExampleTest#0" />
+                <element signature="method#getBiggestPaymentsFromClientsMixedTest#0;class#ExampleTest#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="conflict2.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pay-test/src/test/resources/il/ac/technion/cs/sd/pay/test/conflict2.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="27" column="24" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="conflict.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pay-test/src/test/resources/il/ac/technion/cs/sd/pay/test/conflict.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="59" column="7" lean-forward="true" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -150,13 +141,13 @@
         <option value="$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/myPayBookInitializer.java" />
         <option value="$PROJECT_DIR$/library/pom.xml" />
         <option value="$PROJECT_DIR$/pay-test/pom.xml" />
-        <option value="$PROJECT_DIR$/library/src/main/java/SYLib/SYLibrary.java" />
         <option value="$PROJECT_DIR$/library/src/test/java/SYLibTests/SYLibTests.java" />
         <option value="$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/FakeLib.java" />
         <option value="$PROJECT_DIR$/pay-test/src/test/resources/il/ac/technion/cs/sd/pay/test/conflict2.xml" />
-        <option value="$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/myPayBookReader.java" />
         <option value="$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/ExampleTest.java" />
         <option value="$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/PayBookModule.java" />
+        <option value="$PROJECT_DIR$/library/src/main/java/SYLib/SYLibrary.java" />
+        <option value="$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/myPayBookReader.java" />
       </list>
     </option>
   </component>
@@ -174,9 +165,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="950" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="x" value="951" />
+    <option name="width" value="978" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -185,8 +176,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,6 +187,36 @@
               <item name="base" type="b2602c69:ProjectViewProjectNode" />
               <item name="base" type="462c0819:PsiDirectoryNode" />
               <item name="library" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="base" type="b2602c69:ProjectViewProjectNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="base" type="b2602c69:ProjectViewProjectNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="base" type="b2602c69:ProjectViewProjectNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="base" type="b2602c69:ProjectViewProjectNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="SYLib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="base" type="b2602c69:ProjectViewProjectNode" />
@@ -259,11 +278,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/library/src/main/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
   </component>
@@ -777,7 +799,9 @@
       <workItem from="1526236918969" duration="1561000" />
       <workItem from="1526283189810" duration="2391000" />
       <workItem from="1526286903715" duration="1360000" />
-      <workItem from="1526310702581" duration="13205000" />
+      <workItem from="1526310702581" duration="14418000" />
+      <workItem from="1526460249152" duration="599000" />
+      <workItem from="1526510568671" duration="788000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1526224161979</created>
@@ -828,7 +852,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526409037459</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fakes and Tests">
+      <created>1526409057170</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1526409057170</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -864,7 +895,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21336000" />
+    <option name="totallyTimeSpent" value="23936000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -872,7 +903,6 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32968536" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -892,6 +922,7 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994528" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32968536" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info id="Nl-Palette" order="6" />
@@ -999,6 +1030,23 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pay-test/src/test/resources/il/ac/technion/cs/sd/pay/test/conflict.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1298">
+          <caret line="59" column="7" lean-forward="true" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/PayBookModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/PayBookModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1027,18 +1075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1276">
           <caret line="70" selection-start-line="70" selection-end-line="70" />
-          <folding>
-            <element signature="docComment;class#SYLibTests#0" />
-            <element signature="method#checkIfCollectionAppearsAndAddIt#0;class#SYLibTests#0" />
-            <element signature="method#cantCreateSameStorageTwiceTest#0;class#SYLibTests#0" />
-            <element signature="method#cantSaveTheSameCollectionTwiceTest#0;class#SYLibTests#0" />
-            <element signature="method#cantRestoreUnsavedCollectionTest#0;class#SYLibTests#0" />
-            <element signature="method#restoreCollectionTest#0;class#SYLibTests#0" />
-            <element signature="method#addEntryToStorageWhichDoesNotExustTest#0;class#SYLibTests#0" />
-            <element signature="method#addEntryTwiceUpdatesTest#0;class#SYLibTests#0" />
-            <element signature="method#getFromStorageWhichDoesNotExistTest#0;class#SYLibTests#0" />
-            <element signature="method#getEmptyValueTest#0;class#SYLibTests#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1174,9 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#338#339#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1191,9 +1224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
           <caret line="97" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#3212#3213#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1229,9 +1259,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
           <caret line="110" selection-start-line="110" selection-end-line="110" />
-          <folding>
-            <element signature="e#3664#3665#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1302,55 +1329,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="902">
           <caret line="130" column="102" selection-start-line="130" selection-start-column="102" selection-end-line="130" selection-end-column="102" />
-          <folding>
-            <element signature="docComment;class#SYLibTests#0" />
-            <element signature="method#checkIfCollectionAppearsAndAddIt#0;class#SYLibTests#0" />
-            <element signature="method#cantCreateSameStorageTwiceTest#0;class#SYLibTests#0" />
-            <element signature="method#cantSaveTheSameCollectionTwiceTest#0;class#SYLibTests#0" />
-            <element signature="method#cantRestoreUnsavedCollectionTest#0;class#SYLibTests#0" />
-            <element signature="method#restoreCollectionTest#0;class#SYLibTests#0" />
-            <element signature="method#addEntryToStorageWhichDoesNotExustTest#0;class#SYLibTests#0" />
-            <element signature="method#addEntryTwiceUpdatesTest#0;class#SYLibTests#0" />
-            <element signature="method#getFromStorageWhichDoesNotExistTest#0;class#SYLibTests#0" />
-            <element signature="method#getEmptyValueTest#0;class#SYLibTests#0" />
-          </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/SYLib/SYLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="32" column="125" selection-start-line="32" selection-start-column="125" selection-end-line="32" selection-end-column="125" />
-          <folding>
-            <element signature="docComment;class#SYLibrary#0" />
-            <element signature="method#SYLibrary#0;class#SYLibrary#0" />
-            <element signature="method#openStorage#0;class#SYLibrary#0" />
-            <element signature="method#saveCollection#0;class#SYLibrary#0" />
-            <element signature="method#restoreCollection#0;class#SYLibrary#0" />
-            <element signature="method#addEntry#0;class#SYLibrary#0" />
-            <element signature="method#get#0;class#SYLibrary#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pay-test/src/test/resources/il/ac/technion/cs/sd/pay/test/zeros.xml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/myPayBookInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#999#1000#0" expanded="true" />
-            <element signature="e#1031#1032#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/FakeLib.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
+        <state relative-caret-position="264">
           <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1358,26 +1349,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pay-test/src/test/resources/il/ac/technion/cs/sd/pay/test/small.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pay-test/src/test/resources/il/ac/technion/cs/sd/pay/test/conflict.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="59" column="7" lean-forward="true" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pay-test/src/test/resources/il/ac/technion/cs/sd/pay/test/conflict2.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="594">
           <caret line="27" column="24" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/PayBookReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
+        <state relative-caret-position="616">
           <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
         </state>
       </provider>
@@ -1389,29 +1370,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/myPayBookReader.java">
+    <entry file="file://$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/PayBookModule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="132" selection-start-line="132" selection-end-line="132" />
+        <state relative-caret-position="330">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding>
-            <element signature="docComment;class#myPayBookReader#0" />
-            <element signature="method#myPayBookReader#0;class#myPayBookReader#0" />
-            <element signature="method#restorePairMap#0;class#myPayBookReader#0" />
-            <element signature="method#restoreStringMap#0;class#myPayBookReader#0" />
-            <element signature="method#paidTo#0;class#myPayBookReader#0" />
-            <element signature="method#getPayment#0;class#myPayBookReader#0" />
-            <element signature="method#sellerOrClientComparator#0;class#myPayBookReader#0" />
-            <element signature="method#getBiggestSpenders#0;class#myPayBookReader#0" />
-            <element signature="method#getRichestSellers#0;class#myPayBookReader#0" />
-            <element signature="method#getFavoriteSeller#0;class#myPayBookReader#0" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/SYLib/SYLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pay-test/src/test/resources/il/ac/technion/cs/sd/pay/test/conflict.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="59" column="7" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/ExampleTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="210" column="30" selection-start-line="210" selection-start-column="30" selection-end-line="214" selection-end-column="35" />
+        <state relative-caret-position="306">
+          <caret line="178" column="5" lean-forward="true" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
           <folding>
             <element signature="method#setupAndGetReader#0;class#ExampleTest#0" />
             <element signature="method#testSimple#0;class#ExampleTest#0" />
@@ -1428,23 +1414,31 @@
             <element signature="method#getFavouriteSellerClientDoesntExistTest#0;class#ExampleTest#0" />
             <element signature="method#getFavouriteSellerClientExistsNoConflictTest#0;class#ExampleTest#0" />
             <element signature="method#getFavouriteSellerClientExistsConflictTest#0;class#ExampleTest#0" />
-            <element signature="method#gerBiggestClientSmallTest#0;class#ExampleTest#0" />
             <element signature="method#getBiggestClientNoSellerTest#0;class#ExampleTest#0" />
             <element signature="method#getBiggestClientConflictTest#0;class#ExampleTest#0" />
             <element signature="method#getBiggestPaymentsToSellersSmallTest#0;class#ExampleTest#0" />
             <element signature="method#getBiggestPaymentsFromClientsOnlyZerosTest#0;class#ExampleTest#0" />
-            <element signature="e#7222#7256#0" />
             <element signature="method#getBiggestPaymentsFromClientsNoZerosTest#0;class#ExampleTest#0" />
+            <element signature="method#getBiggestPaymentsFromClientsMixedTest#0;class#ExampleTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pay-test/src/test/java/il/ac/technion/cs/sd/pay/test/PayBookModule.java">
+    <entry file="file://$PROJECT_DIR$/pay-app/src/main/java/il/ac/technion/cs/sd/pay/app/myPayBookReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        <state relative-caret-position="328">
+          <caret line="133" column="27" lean-forward="true" selection-start-line="133" selection-start-column="27" selection-end-line="133" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#myPayBookReader#0" />
+            <element signature="method#myPayBookReader#0;class#myPayBookReader#0" />
+            <element signature="method#restorePairMap#0;class#myPayBookReader#0" />
+            <element signature="method#restoreStringMap#0;class#myPayBookReader#0" />
+            <element signature="method#paidTo#0;class#myPayBookReader#0" />
+            <element signature="method#getPayment#0;class#myPayBookReader#0" />
+            <element signature="method#sellerOrClientComparator#0;class#myPayBookReader#0" />
+            <element signature="method#getBiggestSpenders#0;class#myPayBookReader#0" />
+            <element signature="method#getRichestSellers#0;class#myPayBookReader#0" />
+            <element signature="method#getFavoriteSeller#0;class#myPayBookReader#0" />
           </folding>
         </state>
       </provider>
