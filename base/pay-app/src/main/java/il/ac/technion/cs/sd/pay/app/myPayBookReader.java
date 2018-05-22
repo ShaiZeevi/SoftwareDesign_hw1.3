@@ -21,13 +21,17 @@ public class myPayBookReader implements PayBookReader {
     @Inject
     public myPayBookReader(ISYLibable myLib) {
         this.myLib = myLib;
-        String clientCollectionName = "clientSpending";
-        String sellerCollectionName = "sellerProfits";
-        String clientSellerCollectionName = "sales";
+//        String clientCollectionName = "clientSpending";
+//        String sellerCollectionName = "sellerProfits";
+//        String clientSellerCollectionName = "sales";
+//
+//        clientSpending = restoreStringMap(clientCollectionName);
+//        sellerProfits = restoreStringMap(sellerCollectionName);
+//        sales = restorePairMap(clientSellerCollectionName);
 
-        clientSpending = restoreStringMap(clientCollectionName);
-        sellerProfits = restoreStringMap(sellerCollectionName);
-        sales = restorePairMap(clientSellerCollectionName);
+
+
+
     }
 
     private Map<Pair<String, String>, Double> restorePairMap(String collectionName) {
