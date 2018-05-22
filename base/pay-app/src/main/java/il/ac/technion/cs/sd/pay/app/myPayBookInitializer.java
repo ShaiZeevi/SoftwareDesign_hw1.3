@@ -1,6 +1,5 @@
 package il.ac.technion.cs.sd.pay.app;
 
-import SYLib.CollectionAlreadyExistsException;
 import SYLib.ISYLibable;
 import SYLib.StorageAlreadyExistsException;
 import SYLib.StorageDoesNotExistsException;
@@ -48,56 +47,27 @@ public class myPayBookInitializer implements PayBookInitializer {
 
     @Override
     public void setup(String xmlData) {
-        DocumentBuilderFactory herFactory = DocumentBuilderFactory.newInstance();
         try {
-            DocumentBuilder hisBuilder = herFactory.newDocumentBuilder();
-            Document theirsDoc = hisBuilder.parse(new ByteArrayInputStream(xmlData.getBytes(StandardCharsets.UTF_8)));
-            NodeList ourList = theirsDoc.getElementsByTagName("Client");
+            readXML(xmlData);
 
-            readPayments(ourList);
+            setupSales();
 
-//            myLib.openStorage("clientSpending");
-//            myLib.openStorage("sellerProfits");
+            setupTopClientPayment();
+            setupTopSellerProfits();
 
-            myLib.openStorage("sales");
-
-            for(Map.Entry<String, Double> entry : sales.entrySet()){
-                myLib.addEntry("sales", entry.getKey(), entry.getValue().toString());
-            }
-
-            myLib.openStorage("topClientPayments");
-
-            List<String> top10ClientsList = clientSpending.entrySet().stream().map(x -> new Pair<>(x.getKey(), x.getValue())).sorted(this::sellerOrClientComparator)
-                    .map(Pair::getKey).collect(Collectors.toList());
-
-            Integer pos = 0;
-            for(String entry : top10ClientsList.subList(0, Math.min(10, top10ClientsList.size()))){
-                myLib.addEntry("topClientPayments", pos.toString(), entry);
-                pos++;
-            }
-
-            pos = 0;
-            myLib.openStorage("topSellerProfits");
-            List<String> top10SellerList = sellerProfits.entrySet().stream().map(x -> new Pair<>(x.getKey(), x.getValue()))
-                    .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
-
-            for(String entry : top10SellerList.subList(0, Math.min(10, top10SellerList.size()))){
-                myLib.addEntry("topSellerProfits", pos.toString(), entry);
-                pos++;
-            }
 
             Map<String, String> map1 = new HashMap<>();
             Map<String, String> map2 = new HashMap<>();
 
             myLib.openStorage("faveSellerMapping");
 
-            for(String clientName : clientSpending.keySet()){
+            for (String clientName : clientSpending.keySet()) {
                 List<String> temp = sales.entrySet().stream()
                         .filter(x -> x.getKey().split("$")[0].equals(clientName))
                         .map(x -> new Pair<>(x.getKey().split("$")[1], x.getValue()))
                         .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
 
-                if(temp.size() > 0){
+                if (temp.size() > 0) {
                     myLib.addEntry("faveSellerMapping", clientName, temp.get(0));
                     map1.put(clientName, temp.get(0));
                 }
@@ -105,13 +75,13 @@ public class myPayBookInitializer implements PayBookInitializer {
 
             myLib.openStorage("bigClientMapping");
 
-            for(String sellerName : sellerProfits.keySet()){
+            for (String sellerName : sellerProfits.keySet()) {
                 List<String> temp = sales.entrySet().stream()
                         .filter(x -> x.getKey().split("$")[1].equals(sellerName))
                         .map(x -> new Pair<>(x.getKey().split("$")[0], x.getValue()))
                         .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
 
-                if(temp.size() > 0){
+                if (temp.size() > 0) {
                     myLib.addEntry("bigClientMapping", sellerName, temp.get(0));
                     map2.put(sellerName, temp.get(0));
                 }
@@ -129,13 +99,12 @@ public class myPayBookInitializer implements PayBookInitializer {
 
                 }
             }
-
+            Integer pos;
             pos = 0;
-            for(Map.Entry<String, Integer> entry : getTop10Map(resultList).entrySet()) {
+            for (Map.Entry<String, Integer> entry : getTop10Map(resultList).entrySet()) {
                 myLib.addEntry("biggestPaymentsToSellers", pos, entry.getKey() + "$" + entry.getValue());
                 pos++;
             }
-
 
 
             myLib.openStorage("biggestPaymentsFromClients");
@@ -150,22 +119,63 @@ public class myPayBookInitializer implements PayBookInitializer {
             }
 
             pos = 0;
-            for(Map.Entry<String, Integer> entry : getTop10Map(resultList).entrySet()) {
+            for (Map.Entry<String, Integer> entry : getTop10Map(resultList).entrySet()) {
                 myLib.addEntry("biggestPaymentsFromClients", pos, entry.getKey() + "$" + entry.getValue());
                 pos++;
             }
 
-//
-//            String clientCollectionName = "clientSpending";
-//            myLib.saveCollection(clientCollectionName, clientSpending.entrySet().stream().map(Object::toString).collect(Collectors.toList()));
-//            String sellerCollectionName = "sellerProfits";
-//            myLib.saveCollection(sellerCollectionName, sellerProfits.entrySet().stream().map(Object::toString).collect(Collectors.toList()));
-//            String clientSellerCollectionName = "sales";
-//            myLib.saveCollection(clientSellerCollectionName, sales.entrySet().stream().map(Object::toString).collect(Collectors.toList()));
-
-        } catch (StorageDoesNotExistsException | DataFormatException | ParserConfigurationException | SAXException | IOException  | StorageAlreadyExistsException e) {
+        } catch (StorageDoesNotExistsException | DataFormatException | StorageAlreadyExistsException e) {
             e.printStackTrace();
             throw new AssertionError();
+        }
+    }
+
+    private void readXML(String xmlData) {
+        try {
+            DocumentBuilderFactory herFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder hisBuilder;
+            hisBuilder = herFactory.newDocumentBuilder();
+            Document theirsDoc = hisBuilder.parse(new ByteArrayInputStream(xmlData.getBytes(StandardCharsets.UTF_8)));
+            NodeList ourList = theirsDoc.getElementsByTagName("Client");
+            readPayments(ourList);
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void setupTopSellerProfits() throws StorageAlreadyExistsException, StorageDoesNotExistsException, DataFormatException {
+        Integer pos;
+
+        pos = 0;
+        myLib.openStorage("topSellerProfits");
+        List<String> top10SellerList = sellerProfits.entrySet().stream().map(x -> new Pair<>(x.getKey(), x.getValue()))
+                .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
+
+        for (String entry : top10SellerList.subList(0, Math.min(10, top10SellerList.size()))) {
+            myLib.addEntry("topSellerProfits", pos.toString(), entry);
+            pos++;
+        }
+    }
+
+    private void setupTopClientPayment() throws StorageAlreadyExistsException, StorageDoesNotExistsException, DataFormatException {
+        myLib.openStorage("topClientPayments");
+
+        List<String> top10ClientsList = clientSpending.entrySet().stream().map(x -> new Pair<>(x.getKey(), x.getValue())).sorted(this::sellerOrClientComparator)
+                .map(Pair::getKey).collect(Collectors.toList());
+
+        Integer pos = 0;
+        for (String entry : top10ClientsList.subList(0, Math.min(10, top10ClientsList.size()))) {
+            myLib.addEntry("topClientPayments", pos.toString(), entry);
+            pos++;
+        }
+    }
+
+    private void setupSales() throws StorageAlreadyExistsException, StorageDoesNotExistsException, DataFormatException {
+        myLib.openStorage("sales");
+
+        for (Map.Entry<String, Double> entry : sales.entrySet()) {
+            myLib.addEntry("sales", entry.getKey(), entry.getValue().toString());
         }
     }
 
@@ -177,7 +187,7 @@ public class myPayBookInitializer implements PayBookInitializer {
         for (int client = 0; client < ourList.getLength(); client++) {
             Element currentClientNode = (Element) ourList.item(client);
             NodeList paymentList = currentClientNode.getElementsByTagName("Payment");
-            if (paymentList.getLength() == 0){
+            if (paymentList.getLength() == 0) {
                 clientSpending.put(currentClientNode.getAttribute("Id"), 0.);
                 continue;
             }
