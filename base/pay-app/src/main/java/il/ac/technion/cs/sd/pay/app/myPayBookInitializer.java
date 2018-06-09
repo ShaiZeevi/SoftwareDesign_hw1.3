@@ -63,8 +63,8 @@ public class myPayBookInitializer implements PayBookInitializer {
 
             for (String clientName : clientSpending.keySet()) {
                 List<String> temp = sales.entrySet().stream()
-                        .filter(x -> x.getKey().split("$")[0].equals(clientName))
-                        .map(x -> new Pair<>(x.getKey().split("$")[1], x.getValue()))
+                        .filter(x -> x.getKey().split("=")[0].equals(clientName))
+                        .map(x -> new Pair<>(x.getKey().split("=")[1], x.getValue()))
                         .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
 
                 if (temp.size() > 0) {
@@ -77,8 +77,8 @@ public class myPayBookInitializer implements PayBookInitializer {
 
             for (String sellerName : sellerProfits.keySet()) {
                 List<String> temp = sales.entrySet().stream()
-                        .filter(x -> x.getKey().split("$")[1].equals(sellerName))
-                        .map(x -> new Pair<>(x.getKey().split("$")[0], x.getValue()))
+                        .filter(x -> x.getKey().split("=")[1].equals(sellerName))
+                        .map(x -> new Pair<>(x.getKey().split("=")[0], x.getValue()))
                         .sorted(this::sellerOrClientComparator).map(Pair::getKey).collect(Collectors.toList());
 
                 if (temp.size() > 0) {
@@ -94,7 +94,7 @@ public class myPayBookInitializer implements PayBookInitializer {
             for (String sellerId : sellerProfits.keySet()) {
                 if (map2.get(sellerId) != null) {
                     String clientId = map2.get(sellerId);
-                    double amount = sales.get(clientId + "$" + sellerId);
+                    double amount = sales.get(clientId + "=" + sellerId);
                     resultList.add(new Pair<>(sellerId, amount));
 
                 }
@@ -102,7 +102,7 @@ public class myPayBookInitializer implements PayBookInitializer {
             Integer pos;
             pos = 0;
             for (Map.Entry<String, Integer> entry : getTop10Map(resultList).entrySet()) {
-                myLib.addEntry("biggestPaymentsToSellers", pos, entry.getKey() + "$" + entry.getValue());
+                myLib.addEntry("biggestPaymentsToSellers", pos, entry.getKey() + "=" + entry.getValue());
                 pos++;
             }
 
@@ -112,15 +112,15 @@ public class myPayBookInitializer implements PayBookInitializer {
 
             for (String clientId : clientSpending.keySet()) {
                 if (map1.get(clientId) != null) {
-                    String sellerId = map2.get(clientId);
-                    double amount = sales.get(clientId + "$" + sellerId);
-                    resultList.add(new Pair<>(sellerId, amount));
+                    String sellerId = map1.get(clientId);
+                    double amount = sales.get(clientId + "=" + sellerId);
+                    resultList.add(new Pair<>(clientId, amount));
                 }
             }
 
             pos = 0;
             for (Map.Entry<String, Integer> entry : getTop10Map(resultList).entrySet()) {
-                myLib.addEntry("biggestPaymentsFromClients", pos, entry.getKey() + "$" + entry.getValue());
+                myLib.addEntry("biggestPaymentsFromClients", pos, entry.getKey() + "=" + entry.getValue());
                 pos++;
             }
 
@@ -207,9 +207,9 @@ public class myPayBookInitializer implements PayBookInitializer {
                 if (!sellerProfits.containsKey(sellerName)) sellerProfits.put(sellerName, amount);
                 else sellerProfits.put(sellerName, sellerProfits.get(sellerName) + amount);
 
-                if (!sales.containsKey(clientID + "$" + sellerName))
-                    sales.put(clientID + "$" + sellerName, amount);
-                else sales.put(clientID + "$" + sellerName, sales.get(clientID + "$" + sellerName) + amount);
+                if (!sales.containsKey(clientID + "=" + sellerName))
+                    sales.put(clientID + "=" + sellerName, amount);
+                else sales.put(clientID + "=" + sellerName, sales.get(clientID + "=" + sellerName) + amount);
 
             }
         }

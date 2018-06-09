@@ -41,8 +41,7 @@ public class myPayBookReader implements PayBookReader {
             myLib.openStorage("biggestPaymentsToSellers");
             myLib.openStorage("biggestPaymentsFromClients");
 
-        } catch (StorageAlreadyExistsException e) {
-            e.printStackTrace();
+        } catch (StorageAlreadyExistsException ignore) {
         }
 
     }
@@ -92,7 +91,7 @@ public class myPayBookReader implements PayBookReader {
     public boolean paidTo(String clientId, String sellerId) {
 //        return sales.containsKey(new Pair<>(clientId, sellerId));
         try {
-            return myLib.get("sales", clientId + "$" + sellerId).isPresent();
+            return myLib.get("sales", clientId + "=" + sellerId).isPresent();
         } catch (StorageDoesNotExistsException e) {
             e.printStackTrace();
         }
@@ -106,7 +105,7 @@ public class myPayBookReader implements PayBookReader {
 //        if (dbl == null) return OptionalDouble.empty();
 //        else return OptionalDouble.of(dbl);
         try {
-            Optional<String> opt = myLib.get("sales", clientId + "$" + sellerId);
+            Optional<String> opt = myLib.get("sales", clientId + "=" + sellerId);
             return opt.map(s -> OptionalDouble.of(Double.parseDouble(s))).orElseGet(OptionalDouble::empty);
         } catch (StorageDoesNotExistsException e) {
             e.printStackTrace();
@@ -205,27 +204,13 @@ public class myPayBookReader implements PayBookReader {
 
     @Override
     public Map<String, Integer> getBiggestPaymentsToSellers() {
-//        List<Pair<String, Double>> resultList = new LinkedList<>();
-//
-//        for (String sellerId : sellerProfits.keySet()) {
-//            if (!getBiggestClient(sellerId).isPresent()) {
-////                continue;
-//                throw new AssertionError("no payment made to seller " + sellerId);
-//            }
-//
-//            String clientId = getBiggestClient(sellerId).get();
-//            double amount = sales.get(new Pair<>(clientId, sellerId));
-//
-//            resultList.add(new Pair<>(sellerId, amount));
-//        }
-//        return getTop10Map(resultList);
 
         Map<String, Integer> result = new HashMap<>();
         try {
             for (int i = 0; i < 10; i++) {
                 Optional<String> opt = myLib.get("biggestPaymentsToSellers", i);
                 if(!opt.isPresent()) break;
-                result.put(opt.get().split("$")[0], Integer.parseInt(opt.get().split("$")[1]));
+                result.put(opt.get().split("=")[0], Integer.parseInt(opt.get().split("=")[1]));
             }
 
             return result;
@@ -240,27 +225,12 @@ public class myPayBookReader implements PayBookReader {
 
     @Override
     public Map<String, Integer> getBiggestPaymentsFromClients() {
-//        List<Pair<String, Double>> resultList = new LinkedList<>();
-//
-//        for (String clientId : clientSpending.keySet()) {
-//            if (!getFavoriteSeller(clientId).isPresent()) {
-//                continue;
-////                throw new AssertionError("client " + clientId + " has made not payment");
-//            }
-//
-//            String sellerId = getFavoriteSeller(clientId).get();
-//            double amount = sales.get(new Pair<>(clientId, sellerId));
-//
-//            resultList.add(new Pair<>(clientId, amount));
-//        }
-//        //TODO: sort and get top 10
-//        return getTop10Map(resultList);
         Map<String, Integer> result = new HashMap<>();
         try {
             for (int i = 0; i < 10; i++) {
                 Optional<String> opt = myLib.get("biggestPaymentsFromClients", i);
                 if(!opt.isPresent()) break;
-                result.put(opt.get().split("$")[0], Integer.parseInt(opt.get().split("$")[1]));
+                result.put(opt.get().split("=")[0], Integer.parseInt(opt.get().split("=")[1]));
             }
 
             return result;
